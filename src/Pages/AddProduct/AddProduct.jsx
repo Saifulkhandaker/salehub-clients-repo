@@ -15,6 +15,19 @@ const AddProduct = () => {
         const rating = form.rating.value;
         const newProduct = {image, productName, brandName, type, price, description, rating};
         console.log(newProduct); 
+
+        // send date to the server
+        fetch('http://localhost:5000/product', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
     }
 
     return (
