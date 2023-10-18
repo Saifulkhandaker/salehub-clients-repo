@@ -1,7 +1,8 @@
 import { AiFillStar } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
-  const { brandName, description, image, price, productName, rating, type } =
+  const { _id, brandName, description, image, price, productName, rating, type } =
     product;
   return (
     <div >
@@ -23,7 +24,9 @@ const ProductCard = ({ product }) => {
             <p className='flex text-center items-center gap-1'>{rating} <AiFillStar></AiFillStar></p>
           </div>
           <div className="flex justify-around gap-5 mt-2">
+            <Link to={`/productDetails/${_id}`}>
             <button className="btn ">View Details</button>
+            </Link>
             <button className="btn px-7 ">Update</button>
           </div>
         </div>
