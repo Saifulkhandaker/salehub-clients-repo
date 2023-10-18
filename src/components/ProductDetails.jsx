@@ -1,4 +1,6 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 const ProductDetails = () => {
@@ -6,6 +8,33 @@ const ProductDetails = () => {
     const productDetail = useLoaderData();
 
     const { _id, brandName, description, image, price, productName, rating, type} = productDetail;
+
+    const handleAddToCart = () => {
+        const addedCartItemsArray = [];
+
+        const cartItems = JSON.parse(localStorage.getItem('items'))
+
+        if(!cartItems) {
+            addedCartItemsArray.push(productDetail)
+            localStorage.setItem('items',JSON.stringify(addedCartItemsArray))
+            Swal.fire({
+                title: 'Success!',
+                text: 'Successfully added to the cart',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+        }
+        else{
+            addedCartItemsArray.push(...cartItems,productDetail)
+            localStorage.setItem('items',JSON.stringify(addedCartItemsArray))
+            Swal.fire({
+                title: 'Success!',
+                text: 'Successfully added to the cart',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+        }
+    }
 
     return (
         <div className="w-11/12 mx-auto py-10">
@@ -20,7 +49,7 @@ const ProductDetails = () => {
       <p className="text-lg font-medium">Brand: <span className="text-xl font-bold">{brandName}</span></p>
       <p className="text-lg font-medium">Price: <span className="text-xl font-bold">{price}</span> $</p>
       </div>
-      <button className="btn bg-white text-black font-medium border border-gray-600 ">Add To Cart</button>
+      <button onClick={handleAddToCart} className="btn bg-white text-black font-medium border border-gray-600 ">Add To Cart</button>
     </div>
   </div>
 </div>
