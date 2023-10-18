@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
           <div className="flex gap-4">
           <p className="text-lg">Type: <span className='text-lg font-medium'>{type}</span></p>
             <p className="text-lg">Price: <span className='text-lg font-medium'>{price}$</span></p>
-            <p className='flex text-center items-center gap-1'>{rating} <AiFillStar></AiFillStar></p>
+            <p className='flex text-center items-center gap-1'><span className='text-lg font-medium'>{rating}</span> <AiFillStar></AiFillStar></p>
           </div>
           <div className="flex justify-around gap-5 mt-2">
             <Link to={`/productDetails/${_id}`}>
