@@ -27,7 +27,9 @@ const ProductCard = ({ product }) => {
             <Link to={`/productDetails/${_id}`}>
             <button className="btn  bg-white text-black font-medium border border-gray-600 ">View Details</button>
             </Link>
-            <button className="btn  bg-white text-black font-medium border border-gray-600 px-7 ">Update</button>
+           <Link to={`/updateProduct/${_id}`}>
+           <button className="btn  bg-white text-black font-medium border border-gray-600 px-7 ">Update</button>
+           </Link>
           </div>
         </div>
       </div>
