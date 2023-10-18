@@ -10,9 +10,9 @@ const ProductDetails = () => {
     return (
         <div className="w-11/12 mx-auto py-10">
             <div>
-            <div className="hero min-h-screen  bg-base-200">
+            <div className="hero min-h-screen border border-gray-300  bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
-    <img src={image} className="max-w-sm rounded-lg shadow-2xl" />
+    <img src={image} className="max-w-sm  rounded-lg shadow-2xl" />
     <div>
       <h1 className="text-5xl font-bold">{productName}</h1>
       <p className="py-6">{description}</p>
