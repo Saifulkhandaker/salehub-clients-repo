@@ -10,7 +10,7 @@ const Instagram = () => {
         <div className='w-11/12 mx-auto py-10'>
             {/* content description */}
             <div className='text-center py-10'>
-             <h2 className="text-3xl font-bold text-[#000000]">Follow us on Instagram</h2>
+             <h2 className="text-3xl font-bold ">Follow us on Instagram</h2>
              <p className="text-xl text-[#D9B883] font-medium mb-2">@saleHub</p>
              <p className="text-xl">You can have anything you want in life if you dress for it. Style is a way <br /> to say who you are without having to speak.</p>
             </div>
