@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
 const Login = () => {
 
-    const {googleSignIn} = useContext(AuthContext);
+    const {googleSignIn,signIn} = useContext(AuthContext);
+    const location = useLocation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
 
     const navigate = useNavigate()
@@ -26,6 +32,27 @@ const Login = () => {
       })
     }
 
+    const handleLogin = (e) => {
+      e.preventDefault();
+      if((email, password)){
+        signIn(email, password)
+        .then(result => {
+          setError('');
+          Swal.fire({
+            title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
+            setTimeout(() => {
+              navigate(location?.state ? location.state : '/');
+            }, 3000);
+        })
+        .catch((err) => {
+          setError('Invalid email or password');
+          Swal.fire({
+            title: 'Error!',text: 'Invalid email or password',icon: 'error',confirmButtonText: 'Cool' });
+
+        })
+      }
+    }
+
     return (
         <div>
             <div className="hero min-h-screen ">
@@ -34,13 +61,13 @@ const Login = () => {
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form  className="card-body">
+            <form onSubmit={handleLogin}  className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                // onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   name="email"
                   placeholder="email"
@@ -53,7 +80,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                //  onChange={(e) => setPassword(e.target.value)}
+                 onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   name="password"
                   placeholder="password"

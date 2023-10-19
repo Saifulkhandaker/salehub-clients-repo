@@ -1,8 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/image/logo.png'
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 const Navber = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logOut()
+    .then()
+    .catch()
+  }
 
 
     const navlinks = <>
@@ -30,10 +40,22 @@ const Navber = () => {
       {navlinks}
     </ul>
   </div>
-  <div className="navbar-end">
-       <Link to="/login" >
+  <div className="navbar-end gap-2">
+    <p className="hidden md:block md:text-lg">{user?.displayName}</p>
+    <img className="h-[55px] rounded-full" src={user?.photoURL} alt="" />
+      
+      {
+        user ?
+        <Link to='/login'>
+        <button onClick={handleSignOut} className="btn">LogOut</button>
+        </Link>
+        :
+        <Link to="/login" >
         <button className="btn">LogIn</button>
         </Link>
+      }
+
+
   </div>
 </div>
 

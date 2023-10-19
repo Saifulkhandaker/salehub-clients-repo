@@ -1,6 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import 'sweetalert2/src/sweetalert2.scss'
+import Swal from "sweetalert2";
 
 const Register = () => {
+
+  const {signUp, handleUpdateProfile} = useContext(AuthContext);
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate()
 
 
 
@@ -11,7 +22,32 @@ const Register = () => {
     const img = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-    console.log(name, img, email, password);
+
+
+    if(!/^(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.{6,})[a-zA-Z0-9@#$%^&+=!]*$/.test(password)){
+      setError(
+        "Password must be at least eight characters long and contain at least one uppercase letter and one special character."
+      )
+      Swal.fire({
+        title: 'error!',text: 'Password must be at least 6 characters long and contain at least one uppercase letter and one special character',icon: 'error',confirmButtonText: 'Cool' });
+     }
+     else{
+      setError('');
+      if(email) {
+        signUp(email, password)
+        .then(result => {
+          handleUpdateProfile(name, img)
+          .then(() => {
+            Swal.fire({
+              title: 'Success!',text: 'Successfully registered',icon: 'success',confirmButtonText: 'Error' });
+              setTimeout(() => {
+                navigate('/');
+              }, 3000);
+          })
+        })
+      }
+     }
+  
   };
 
   return (
