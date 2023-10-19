@@ -11,59 +11,75 @@ import UpdateProduct from "../components/UpdateProduct";
 import Register from "../components/Register";
 import PrivateRoute from "../Providers/PrivateRoute";
 
-
 const myCreatedRoute = createBrowserRouter([
-    {
-        path: '/',
-        element: <Mainlayout></Mainlayout>,
-        errorElement: <ErrorPage></ErrorPage>,
-        children: [
-            {
-                path: '/',
-                element: <Home></Home>,
-                loader: () => fetch('/brand.json')
-            },
-            {
-                path: '/addProduct',
-                element: <PrivateRoute>
-                    <AddProduct></AddProduct>
-                </PrivateRoute>
-            },
-            {
-                path: '/myCart',
-                element: <PrivateRoute>
-                     <MyCart></MyCart>
-                </PrivateRoute>
-            },
-            {
-                path: '/login',
-                element: <Login></Login>
-            },
-            {
-                path: '/register',
-                element: <Register></Register>
-            },
-            {
-                path:'/allProducts',
-                element: <AllProducts></AllProducts>,
-                loader: () => fetch('http://localhost:5000/product')
-            },
-            {
-                path: '/productDetails/:id',
-                element: <PrivateRoute>
-                    <ProductDetails></ProductDetails>
-                </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
-            },
-            {
-                path: '/updateProduct/:id',
-                element:<PrivateRoute>
-                    <UpdateProduct></UpdateProduct>
-                </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    element: <Mainlayout></Mainlayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch("/brand.json"),
+      },
+      {
+        path: "/addProduct",
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myCart",
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/allProducts",
+        element: <AllProducts></AllProducts>,
+        loader: () =>
+          fetch(
+            "https://salehub-server-3forepb7q-saifulkhandaker100course-gmailcom.vercel.app/product"
+          ),
+      },
+      {
+        path: "/productDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ProductDetails></ProductDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://salehub-server-3forepb7q-saifulkhandaker100course-gmailcom.vercel.app/product/${params.id}`
+          ),
+      },
+      {
+        path: "/updateProduct/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateProduct></UpdateProduct>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://salehub-server-3forepb7q-saifulkhandaker100course-gmailcom.vercel.app/product/${params.id}`
+          ),
+      },
+    ],
+  },
+]);
 
 export default myCreatedRoute;
