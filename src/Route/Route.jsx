@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import AllProducts from "../components/AllProducts";
 import ProductDetails from "../components/ProductDetails";
 import UpdateProduct from "../components/UpdateProduct";
+import Register from "../components/Register";
 
 
 const myCreatedRoute = createBrowserRouter([
@@ -32,6 +33,10 @@ const myCreatedRoute = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             },
             {
                 path:'/allProducts',
