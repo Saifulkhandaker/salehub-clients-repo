@@ -1,8 +1,16 @@
-# React + Vite
+# Project : SaleHub - Fashion & Clothing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Features :
 
-Currently, two official plugins are available:
+- Theme Switcher: This website allows users to switch theme between light and dark themes for a personalized viewing experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Customizable Card Layout: Users have the flexibility to display different items in customizable cards, allowing them to arrange and view content as they prefer.
+
+- Product Info on Click: Click to reveal detailed product information with the "Show Details" button.
+
+- Add To Cart: User can add the product to the cart page.
+
+- Shopping Cart Functionality: User can remove the products from the cart page if user want.
+
+- Responsive Design: This website is responsive across all devices for seamless browsing and shopping.
+
