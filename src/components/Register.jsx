@@ -1,17 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Register = () => {
-    return (
-        <div>
-               <div className="hero min-h-screen ">
+
+
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const name = form.get("name");
+    const img = form.get("photo");
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log(name, img, email, password);
+  };
+
+  return (
+    <div>
+      <div className="hero min-h-screen ">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
-          
             <h1 className="text-5xl font-bold">Register now !</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form  className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Your Name</span>
@@ -32,7 +43,7 @@ const Register = () => {
                   type="text"
                   name="photo"
                   placeholder="photo url"
-                  className="input input-bordered" 
+                  className="input input-bordered"
                 />
               </div>
               <div className="form-control">
@@ -45,7 +56,6 @@ const Register = () => {
                   placeholder="email"
                   className="input input-bordered"
                   required
-                  
                 />
               </div>
               <div className="form-control">
@@ -59,20 +69,28 @@ const Register = () => {
                   className="input input-bordered"
                   required
                 />
-                <label className="label">
-                 
-                </label>
+                <label className="label"></label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-white text-black font-medium border border-gray-600">Register</button>
+                <button  className="btn bg-white text-black font-medium border border-gray-600">
+                  Register
+                </button>
               </div>
-              <p>Already have an account!!! Please <Link className="font-medium underline text-[#3cfe01]" to="/login">Login</Link></p>
+              <p>
+                Already have an account!!! Please{" "}
+                <Link
+                  className="font-medium underline text-[#3cfe01]"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </p>
             </form>
           </div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Register;

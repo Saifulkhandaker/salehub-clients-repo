@@ -1,7 +1,31 @@
+import 'sweetalert2/src/sweetalert2.scss'
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 
 const Login = () => {
+
+    const {googleSignIn} = useContext(AuthContext);
+
+
+    const navigate = useNavigate()
+
+
+    const handleGoogle = () => {
+      googleSignIn()
+      .then(result => {
+        Swal.fire({
+          title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
+          setTimeout(() => {
+            navigate('/');
+          }, 3000);
+      })
+    }
+
     return (
         <div>
             <div className="hero min-h-screen ">
@@ -46,7 +70,7 @@ const Login = () => {
                 <button className="btn bg-white text-black font-medium border border-gray-600">Login</button>
               </div>
               <p>Or Login With Google</p>
-              <button className="btn bg-white text-black font-medium border border-gray-600">Login with Google</button>
+              <button onClick={handleGoogle} className="btn bg-white text-black font-medium border border-gray-600">Login with Google</button>
               <p>Don't have an account!!! Please <Link className="font-medium underline text-red-600" to="/register">Register</Link></p>
             </form>
             
