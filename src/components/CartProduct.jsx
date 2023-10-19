@@ -30,9 +30,6 @@ const CartProduct = ({ item }) => {
             <p className="text-lg">Price: <span className='text-lg font-medium'>{price}$</span></p>
             <p className='flex text-center items-center gap-1'><span className='text-lg font-medium'>{rating}</span> <AiFillStar></AiFillStar></p>
           </div>
-          <div className="flex justify-around gap-5 mt-2">
-            <button className='btn text-white py-1 px-10 bg-red-600'>Delete</button>
-          </div>
         </div>
       </div>
     </div>

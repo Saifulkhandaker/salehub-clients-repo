@@ -47,7 +47,7 @@ const Login = () => {
         .catch((err) => {
           setError('Invalid email or password');
           Swal.fire({
-            title: 'Error!',text: 'Invalid email or password',icon: 'error',confirmButtonText: 'Cool' });
+            title: 'Error!',text: 'Invalid email or password',icon: 'error',confirmButtonText: 'Error' });
 
         })
       }

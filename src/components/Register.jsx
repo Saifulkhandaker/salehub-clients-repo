@@ -29,7 +29,7 @@ const Register = () => {
         "Password must be at least eight characters long and contain at least one uppercase letter and one special character."
       )
       Swal.fire({
-        title: 'error!',text: 'Password must be at least 6 characters long and contain at least one uppercase letter and one special character',icon: 'error',confirmButtonText: 'Cool' });
+        title: 'error!',text: 'Password must be at least 6 characters long and contain at least one uppercase letter and one special character',icon: 'error',confirmButtonText: 'Eroor' });
      }
      else{
       setError('');
@@ -39,7 +39,7 @@ const Register = () => {
           handleUpdateProfile(name, img)
           .then(() => {
             Swal.fire({
-              title: 'Success!',text: 'Successfully registered',icon: 'success',confirmButtonText: 'Error' });
+              title: 'Success!',text: 'Successfully registered',icon: 'success',confirmButtonText: 'Cool' });
               setTimeout(() => {
                 navigate('/');
               }, 3000);
